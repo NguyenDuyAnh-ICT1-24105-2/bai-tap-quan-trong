@@ -1,0 +1,60 @@
+/Sử dụng trình soạn thảo vim làm bài tập sau, sau đó chụp ảnh mã nguồn và kết quả chạy chương trình nộp lên canvas:
+
+Viết chương trình gồm các hàm sau:
+
+a. Hàm kiểm tra một số nguyên x có phải là số nguyên tố hay không, nếu là số nguyên tố trả về 1 ngược lại trả về 0.
+
+b. Hàm in ra số nguyên tố trong khoảng từ 1 đến n. 
+
+c. Hàm tính tổng các số nguyên tố trong khoảng từ 1 đến n. 
+
+Viết hàm main gọi các hàm trên và in ra kết quả.
+ 
+Bắt đầu bài :
+#include <stdio.h>
+#include <math.h>
+
+// a. Hàm kiểm tra số nguyên tố
+int laSoNguyenTo(int x) {
+    if (x < 2)
+        return 0;
+    for (int i = 2; i <= sqrt(x); i++) {
+        if (x % i == 0)
+            return 0;
+    }
+    return 1;
+}
+
+// b. Hàm in các số nguyên tố từ 1 đến n
+void inSoNguyenTo(int n) {
+    printf("Cac so nguyen to tu 1 den %d la:\n", n);
+    for (int i = 1; i <= n; i++) {
+        if (laSoNguyenTo(i))
+            printf("%d ", i);
+    }
+    printf("\n");
+}
+
+// c. Hàm tính tổng các số nguyên tố từ 1 đến n
+int tongSoNguyenTo(int n) {
+    int tong = 0;
+    for (int i = 1; i <= n; i++) {
+        if (laSoNguyenTo(i))
+            tong += i;
+    }
+    return tong;
+}
+
+// Hàm main
+int main() {
+    int n;
+    printf("Nhap n: ");
+    scanf("%d", &n);
+
+    inSoNguyenTo(n);
+
+    int tong = tongSoNguyenTo(n);
+    printf("Tong cac so nguyen to tu 1 den %d la: %d\n", n, tong);
+
+    return 0;
+}
