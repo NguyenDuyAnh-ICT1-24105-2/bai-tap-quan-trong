@@ -1,0 +1,20 @@
+/BÀI TẬP TÍNH TỔNG LŨY THỪA 
+#include<stdio.h>
+long int tinhS(int x, int n){
+   long int S = 1;
+ for(int i=1; 1<=n, i++){
+   S += pow(x,i);
+}
+return S;
+}
+int main(){
+  int x, n;
+printf("Nhap x, n : ");
+scanf("%d%d",&x,&n);
+long int S = tinhS(x,n);
+printf("S=%ld\n",S);
+return 0;
+}
+
+
+Khi chạy phải nhập : gcc tênbài.c -o tênbài -lm
