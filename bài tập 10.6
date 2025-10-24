@@ -1,0 +1,50 @@
+Sử dụng trình soạn thảo vim làm bài tập sau. Sau đó chụp ảnh mã nguồn và kết quả chạy chương trình nộp lên canvas. 
+
+- Viết một hàm chấp nhận 2 mảng số nguyên, mỗi mảng có n phần tử, trả về 1 nếu các phần tử trong 2 mảng đó bằng nhau, trả về 0 nếu hai mảng đó có 1 phần tử khác nhau (không bằng nhau). Lưu ý n nhập từ bàn phím và có kiểm tra điều kiện (0<n<15).
+
+- Viết chương trình nhập vào 2 mảng số nguyên và cho biết 2 mảng đó có bằng nhau hay không?
+
+
+
+#include <stdio.h>
+
+int soSanhMang(int a[], int b[], int n) {
+    for (int i = 0; i < n; i++) {
+        if (a[i] != b[i]) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int main() {
+    int n;
+
+    printf("Nhap n (0<n<15): ");
+    scanf("%d", &n);
+
+    if (n <= 0 || n >= 15) {
+        printf("Gia tri n khong hop le!\n");
+        return 0;
+    }
+
+    int mang1[n], mang2[n];
+
+    printf("Nhap mang 1:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &mang1[i]);
+    }
+
+    printf("Nhap mang 2:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &mang2[i]);
+    }
+
+    if (soSanhMang(mang1, mang2, n) == 1) {
+        printf("Hai mang bang nhau.\n");
+    } else {
+        printf("Hai mang khac nhau.\n");
+    }
+
+    return 0;
+}
