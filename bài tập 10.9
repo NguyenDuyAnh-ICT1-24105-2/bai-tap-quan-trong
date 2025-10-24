@@ -1,0 +1,94 @@
+Sử dụng trình soạn thảo vim làm bài tập sau. Sau đó chụp ảnh mã nguồn và kết quả chạy chương trình nộp lên canvas. 
+
+ Viết hàm cho phép nhập vào môt ma trận kích thước mxn.
+
+• Viết hàm cho phép in ma trận ra màn hình từ ma trận được truyền vào.
+
+• Viết 2 hàm cho phép truyền vào 2 ma trận và thực hiện:
+
+– Cộng 2 ma trận;
+
+– Trừ 2 ma trận;.
+
+• Viết chương trình cho phép nhập vào 2 ma trận kích thước mxn, với m là số hàng, n là số cột,  m,  n nhập từ bàn phím,
+
+sau đó viết menu cho phép người dùng thực hiện việc chọn các phép toán:
+
+cộng, trừ, nhân 2 ma trận đó. In ma trận kết quả ra màn hình. 
+
+
+
+
+#include <stdio.h>
+#define MAX 10
+
+// Hàm nhập ma trận
+void nhap_mang(int a[MAX][MAX], int m, int n) {
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("Nhap a[%d][%d]: ", i, j);
+            scanf("%d", &a[i][j]);
+        }
+    }
+}
+
+// Hàm in ma trận
+void in_mang(int a[MAX][MAX], int m, int n) {
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("%d ", a[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
+
+// Hàm cộng hai ma trận
+void cong(int a[MAX][MAX], int b[MAX][MAX], int m, int n) {
+    int c[MAX][MAX];
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            c[i][j] = a[i][j] + b[i][j];
+        }
+    }
+    printf("Tong 2 ma tran:\n");
+    in_mang(c, m, n);
+}
+
+// Hàm trừ hai ma trận
+void tru(int a[MAX][MAX], int b[MAX][MAX], int m, int n) {
+    int c[MAX][MAX];
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            c[i][j] = a[i][j] - b[i][j];
+        }
+    }
+    printf("Hieu 2 ma tran:\n");
+    in_mang(c, m, n);
+}
+
+// Hàm chính
+int main() {
+    int a[MAX][MAX], b[MAX][MAX];
+    int m, n;
+
+    printf("Nhap m, n: ");
+    scanf("%d%d", &m, &n);
+
+    printf("\nNhap ma tran thu 1:\n");
+    nhap_mang(a, m, n);
+
+    printf("\nNhap ma tran thu 2:\n");
+    nhap_mang(b, m, n);
+
+    printf("\nMa tran thu 1:\n");
+    in_mang(a, m, n);
+
+    printf("Ma tran thu 2:\n");
+    in_mang(b, m, n);
+
+    cong(a, b, m, n);
+    tru(a, b, m, n);
+
+    return 0;
+}
