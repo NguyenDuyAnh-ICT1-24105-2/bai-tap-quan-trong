@@ -1,0 +1,78 @@
+Sử dụng trình soạn thảo vim làm bài bài tập sau. Sau đó chụp mã nguồn và kết quả chạy chương trình nộp lên canvas:
+
+ Viết chương trình c thực hiện các công việc sau:
+
+–Nhập một dãy n số bất kỳ từ bàn phím vào mảng a với 0< n <= 10 nhập từ bàn phím.
+
+–Sao chép tất cả các số dương trong mảng a sang mảng b, tất cả các số âm sang mảng c.
+
+–Đưa các mảng b, c ra màn hình
+
+
+#include <stdio.h>
+
+// Hàm nhập mảng
+void nhap_mang(int a[], int n) {
+    for (int i = 0; i < n; i++) {
+        printf("Nhap a[%d] = ", i);
+        scanf("%d", &a[i]);
+    }
+}
+
+// Hàm in mảng
+void in_mang(int a[], int n) {
+    for (int i = 0; i < n; i++) {
+        printf("%d ", a[i]);
+    }
+    printf("\n");
+}
+
+// Hàm sao chép mảng và chia mảng ra số dương / âm
+void saochep(int a[], int n) {
+    int b[10], c[10];
+    int dduong = 0, dam = 0;
+
+    for (int i = 0; i < n; i++) {
+        if (a[i] > 0) {
+            b[dduong++] = a[i];
+        } else if (a[i] < 0) {
+            c[dam++] = a[i];
+        }
+    }
+
+    if (dduong > 0) {
+        printf("Mang so duong: ");
+        in_mang(b, dduong);
+    } else {
+        printf("Khong co so duong trong mang\n");
+    }
+
+    if (dam > 0) {
+        printf("Mang so am: ");
+        in_mang(c, dam);
+    } else {
+        printf("Khong co so am trong mang\n");
+    }
+}
+
+// Hàm main
+int main() {
+    int a[10];
+    int n;
+
+    do {
+        printf("Nhap so phan tu cua mang: ");
+        scanf("%d", &n);
+        if (n <= 0 || n > 10)
+            printf("Nhap lai n.\n");
+    } while (n <= 0 || n > 10);
+
+    nhap_mang(a, n);
+    printf("Mang vua nhap: ");
+    in_mang(a, n);
+
+    saochep(a, n);
+
+    return 0;
+}
+
