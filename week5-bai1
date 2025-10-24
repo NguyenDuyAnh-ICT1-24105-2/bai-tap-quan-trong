@@ -1,0 +1,55 @@
+Sử dụng trình soạn thảo vim làm bài tập sau. Sau đó chụp mã nguồn và kết quả chạy chương trình nộp lên canvas. 
+
+Tính tổng S(n) = 1/2 + 1/4 + 1/6 +…+ 1/2n. Với n nhập từ bàn phím. Yêu cầu nhập n>0.
+1. Sử dụng vòng lặp for
+
+2. Sử dụng vòng lặp while
+
+3. Sử dụng vòng lặp do...while
+
+
+
+#include <stdio.h>
+
+int main() {
+    int n;
+    double sum;
+
+    // Nhập n > 0
+    do {
+        printf("Nhap n (>0): ");
+        scanf("%d", &n);
+        if(n <= 0) {
+            printf("Gia tri n khong hop le. Vui long nhap lai!\n");
+        }
+    } while(n <= 0);
+
+    // 1. Su dung vong lap for
+    sum = 0;
+    for(int i = 1; i <= n; i++) {
+        sum += 1.0 / (2 * i);
+    }
+    printf("Tong su dung for: %.6lf\n", sum);
+
+    // 2. Su dung vong lap while
+    sum = 0;
+    int i = 1;
+    while(i <= n) {
+        sum += 1.0 / (2 * i);
+        i++;
+    }
+    printf("Tong su dung while: %.6lf\n", sum);
+
+    // 3. Su dung vong lap do...while
+    sum = 0;
+    i = 1;
+    do {
+        sum += 1.0 / (2 * i);
+        i++;
+    } while(i <= n);
+    printf("Tong su dung do...while: %.6lf\n", sum);
+
+    return 0;
+}
+
+ 
